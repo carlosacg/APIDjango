@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+
+  web:
+    container_name: api_django
+    build: .
+    env_file: conf/environments/.env-development
+    command: bash -c "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8084"
+    volumes:
+      - .:/api_django
+    ports:
+      - "8084:8084"
+
